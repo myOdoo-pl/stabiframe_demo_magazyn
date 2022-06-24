@@ -1,11 +1,3 @@
-v3.16
-=====
-* Added subtotal after each section at invoice print.
-
-v3.15
-=====
-* Updated dates on invoice print depending on downpayment status.
-
 v3.14.2
 ====
 * Updated Down payment translations.
