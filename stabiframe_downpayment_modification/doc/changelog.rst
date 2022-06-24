@@ -1,11 +1,3 @@
-v0.7.1
-======
-* Modified downpayment creation method to use fixed amount as total price.
-
-v0.7
-====
-* Modified downpayment creation method to always use untaxed amount.
-
 v0.6
 ====
 * Added account currency field to account move form view.
