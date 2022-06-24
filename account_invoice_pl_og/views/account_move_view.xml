@@ -148,7 +148,7 @@
                 <filter string="Issue Date" name="issue_date" domain="[]" context="{'group_by':'date_issue'}"/>
             </xpath> -->
             <xpath expr="//field[@name='name']" position="replace">
-                <field name="name" string="Invoice" filter_domain="['|','|','|','|', ('number','ilike',self), ('origin','ilike',self), ('reference', 'ilike', self), ('partner_id', 'child_of', self),('vat', 'ilike', self)]"/>
+                <field name="name" string="Invoice" filter_domain="['|','|','|', ('name','ilike',self), ('payment_reference', 'ilike', self), ('partner_id', 'child_of', self),('vat', 'ilike', self)]"/>
             </xpath>
         </field>
     </record>

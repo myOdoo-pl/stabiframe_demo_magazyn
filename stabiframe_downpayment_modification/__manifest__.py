@@ -4,7 +4,7 @@
 	'author': 'myOdoo.pl',
 	'website': 'https://myodoo.pl',
 	'category': 'Accounting',
-	'version': '[V14] 0.6',
+	'version': '[V14] 0.7.1',
 	'depends': [
 		'account',
 		'sale',

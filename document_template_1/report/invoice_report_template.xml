@@ -85,12 +85,14 @@
                                 <strong>Invoice Date:</strong>
                                 <p t-field="o.invoice_date" t-options="{'widget': 'date'}"/>
                             </div>
+                            <!-- SHOW SALE DATE ONLY FOR FINAL INVOICES -->
                             <div class="col-auto" name="sale_date"
-                                 t-if="o.main_so_id.date_order
+                                 t-if="not o.is_downpayment and o.main_so_id.date_order
                                  and o.move_type in ('in_refund', 'out_refund', 'out_invoice')
                                  and o.state in ('posted', 'in_payment', 'paid')">
                                 <strong>Sale Date:</strong>
-                                <p t-field="o.main_so_id.date_order" t-options="{'widget': 'date'}"/>
+                                <!-- ON FINAL INVOICES SALE DATE SHOULD BE THE SAME AS INVOICE DATE -->
+                                <p t-field="o.invoice_date" t-options="{'widget': 'date'}"/>
                             </div>
                             <div class="col-auto" name="invoice_date_due"
                                  t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state in ('posted', 'in_payment', 'paid')">
@@ -217,7 +219,7 @@
                                                 <td colspan="99">
                                                     <span t-field="line.name"/>
                                                 </td>
-                                                <t t-set="current_section" t-value="line"/>
+<!--                                                <t t-set="current_section" t-value="line"/>-->
                                                 <t t-set="current_subtotal" t-value="0"/>
                                             </t>
                                             <t t-if="line.display_type == 'line_note'">
@@ -227,8 +229,11 @@
                                             </t>
                                         </tr>
 
-                                        <t t-if="current_section and (line_last or
-                                        o.invoice_line_ids[line_index+1].display_type == 'line_section')">
+<!--                                        <t t-if="current_section and (line_last or-->
+<!--                                        o.invoice_line_ids[line_index+1].display_type == 'line_section')">-->
+
+                                        <t t-if="line_last or
+                                        o.invoice_line_ids[line_index+1].display_type == 'line_section'">
                                             <tr class="is-subtotal text-right">
                                                 <td colspan="99">
                                                     <strong class="mr16">Subtotal</strong>
@@ -380,7 +385,7 @@
                                                 <td colspan="99">
                                                     <span t-field="line_orig.name"/>
                                                 </td>
-                                                <t t-set="current_section" t-value="line"/>
+<!--                                                <t t-set="current_section" t-value="line"/>-->
                                                 <t t-set="current_subtotal" t-value="0"/>
                                             </t>
                                             <t t-if="line_orig.display_type == 'line_note'">
@@ -390,8 +395,11 @@
                                             </t>
                                         </tr>
 
-                                        <t t-if="current_section and (line_last or
-                                        o.invoice_line_ids[line_index+1].display_type == 'line_section')">
+<!--                                        <t t-if="current_section and (line_last or-->
+<!--                                        o.invoice_line_ids[line_index+1].display_type == 'line_section')">-->
+
+                                        <t t-if="line_last or
+                                        o.invoice_line_ids[line_index+1].display_type == 'line_section'">
                                             <tr class="is-subtotal text-right">
                                                 <td colspan="99">
                                                     <strong class="mr16">Subtotal</strong>
@@ -507,7 +515,7 @@
                                                 <td colspan="99">
                                                     <span t-field="l.name"/>
                                                 </td>
-                                                <t t-set="current_section" t-value="line"/>
+<!--                                                <t t-set="current_section" t-value="line"/>-->
                                                 <t t-set="current_subtotal" t-value="0"/>
                                             </t>
                                             <t t-if="l.display_type == 'line_note'">
@@ -517,8 +525,11 @@
                                             </t>
                                         </tr>
 
-                                        <t t-if="current_section and (line_last or
-                                        o.correction_invoice_line_ids[line_index+1].display_type == 'line_section')">
+<!--                                        <t t-if="current_section and (line_last or-->
+<!--                                        o.correction_invoice_line_ids[line_index+1].display_type == 'line_section')">-->
+
+                                        <t t-if="line_last or
+                                        o.correction_invoice_line_ids[line_index+1].display_type == 'line_section'">
                                             <tr class="is-subtotal text-right">
                                                 <td colspan="99">
                                                     <strong class="mr16">Subtotal</strong>
